@@ -3,10 +3,9 @@ import './itemList.sass';
 import Spinner from '../spinner';
 import ErrorMessage from '../errorMessage';
 
-
 export default class ItemList extends Component {
 
-
+    
     state = {
         itemList: null,
         error: false
@@ -33,19 +32,20 @@ export default class ItemList extends Component {
 
     renderItems(arr) {
         return arr.map((item) => {
-            const {id, name} = item;
+            const {id} = item;
+            const label = this.props.renderItem(item);
             return (
                 <li 
                     key={id}
                     className="list-group-item"
-                    onClick={ () => this.props.onCharSelected(id)}>
-                    {name}
+                    onClick={() => this.props.onItemSelected(id)}>
+                    {label}
                 </li>
             )
         });
     }  
 
-    onError(status){
+    onError(){
         this.setState({
             itemList: null,
             error: true
