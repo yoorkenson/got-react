@@ -3,7 +3,7 @@ export default class GotService {
         this._apiBase = "https://www.anapioficeandfire.com/api"
 
     }
-    async getResource(url) {
+    getResource = async (url) => {
         const res = await fetch(`${this._apiBase}${url}`);
         if (!res.ok) {
             throw new Error(`could not fetch ${url}, status: ${res.status}`);
@@ -11,38 +11,38 @@ export default class GotService {
         return await res.json();
     };
 
-    async getAllCharacters() {
+    getAllCharacters = async () => {
         const res = await this.getResource("/characters?page=5&pageSize=10");
         return res.map(this._transformCharacter);
     }
 
-    async getCharacter(id) {
+    getCharacter = async (id) => {
         const character = await this.getResource(`/characters/${id}`); 
         return this._transformCharacter(character);
     }
     
-    async getBooks() {
+    getBooks = async () => {
         const res = await this.getResource(`/books`);
         return res.map(this._transformHouse);
     }
 
-    async getBook(id) {
+    getBook = async (id) => {
         const book = await this.getResource(`/books/${id}`); 
         return this._transformBook(book);
     }
 
-    async getHouses() {
+    getHouses = async () => {
         const res = await this.getResource(`/houses`); 
         return res.map(this._transformHouse);
     }
 
-    async getHouse(id) {
+    getHouse = async (id) => {
         const house = await this.getResource(`/houses/${id}`); 
         return this._transformHouse(house);
         }
     
 
-    _transformCharacter(char) {
+    _transformCharacter = (char) => {
         for (let key in char) {
             if (!char[key]) {
                 char[key] = 'no data:('
@@ -58,7 +58,7 @@ export default class GotService {
         }
     }
 
-    _transformHouse(house) {
+    _transformHouse = (house) => {
         for (let key in house) {
             if (!house[key]) {
                 house[key] = 'no data:('
@@ -75,7 +75,7 @@ export default class GotService {
         }
     }
 
-    _transformBook(book) {
+    _transformBook = (book) => {
         for (let key in book) {
             if (!book[key]) {
                 book[key] = 'no data:('
