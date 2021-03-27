@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import './header.sass';
+import {Link} from 'react-router-dom';
 
 const Header = () => {
     return (
@@ -12,13 +13,13 @@ const Header = () => {
             </h3>
             <ul className="header__links">
                 <li>
-                    <a href="#">Characters</a>
+                    <Link to='/characters/'>Characters</Link>
                 </li>
                 <li>
-                    <a href="#">Houses</a>
+                    <Link to='/houses/'>Houses</Link>
                 </li>
                 <li>
-                    <a href="#">Books</a>   
+                    <Link to='/books/'>Books</Link>
                 </li>
             </ul>
         </div>
